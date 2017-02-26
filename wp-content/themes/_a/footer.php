@@ -8,7 +8,7 @@
  *
  * @package _a
  */
-
+global $redux_demo;
 ?>
 
 	</div><!-- #content -->
@@ -23,6 +23,6 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<?php echo $redux_demo['opt-tracking-code'];?>
 </body>
 </html>

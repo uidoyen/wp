@@ -8,40 +8,56 @@
  *
  * @package _a
  */
-
+global $redux_demo;  // This is your opt_name.
+print_r ($redux_demo);
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="<?php echo $redux_demo['opt-media-favicon']['url'];?>"/>
+
+
 <link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <?php wp_head(); ?>
+<style>
+	body{
+		font-family: <?php echo $redux_demo['opt-typography-body']['font-family'];?>;
+	}
+</style>
 </head>
 
 <body <?php body_class(); ?>>
-<div class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', '_a' ); ?></a>
+<header>
+	<div class="container">
+		<div class="col-md-4">
+			<div class="c-brands">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					
+					<!-- Display Site title when logo image is not available -->
+					<?php if($redux_demo['opt-media-logo']['url'] == ''){ ?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?>
+					<?php }else { ?>
+						<img srcset="<?php echo $redux_demo['opt-media-logo']['url'];?> 1x, <?php echo $redux_demo['opt-media-retina-logo']['url'];?> 2x" alt="">
+					<?php }?>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
 
-			$description = get_bloginfo( 'description', 'display' );
-			?>
-		</div><!-- .site-branding -->
+					</a>
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_a' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+					<?php if($redux_demo['opt-desc-checkbox'] != 0){ ?>
+						<h3><?php echo get_bloginfo( 'description', 'display' );?></h3>
+					<?php }?>
 
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
+				</a>
+			</div>
+		</div>
+		<div class="col-md-8">
+		<nav>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary-menu', 'menu_id' => 'primary-menu' ) ); ?>
+		</nav>
+		</div>
+	</div>
+</header>
+<div id="content" class="site-content">

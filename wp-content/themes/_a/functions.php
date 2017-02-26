@@ -58,7 +58,7 @@ add_action( 'widgets_init', '_a_widgets_init' );
  */
 function _a_scripts() {
 	wp_enqueue_style( '_a-style', get_stylesheet_uri() );
-	wp_enqueue_script( '_a-main', get_template_directory_uri() . '/js/main.js', array(), '20151215', true );
+	wp_enqueue_script( '_a-main', get_template_directory_uri() . '/js/main.js' );
 
 	//Enque only when comment form available
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

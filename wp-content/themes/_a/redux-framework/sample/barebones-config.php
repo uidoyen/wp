@@ -292,7 +292,6 @@
                 'title'    => __( 'Text Area Field', 'redux-framework-demo' ),
                 'subtitle' => __( 'Subtitle', 'redux-framework-demo' ),
                 'desc'     => __( 'Field Description', 'redux-framework-demo' ),
-                'default'  => 'Default Text',
             ),
         )
     ) );
